@@ -1,44 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Background
 
-## Available Scripts
+Our online IDE is able to store versioned data in an own db based file system. Meaning every change of a student or teacher will be stored as an own version. 
+To achieve this we store metadata objects for each file and directory in the file system to our db. 
+For every version one object. The metadata includes the following relevant files:
 
-In the project directory, you can run:
+- type: The mime type of the file (`inode/directory` for directories).
+- name: The name of the file or directory.
+- current: is `true`, if this is the most current version of the file or directory.
+- key: an id for the file or directory, whereas all versions of the same file have the same key.
+- permissions: A object, which stores the access rights ("read" for read access and "write" for write access).
+- children: Only for directories: An array of keys from files or directories, which are currently children of this directory.
 
-### `yarn start`
+The root directory has the special name: "."
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# You task
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Write your code in javascript/typescript (either browser or nodejs).
 
-### `yarn test`
+Provided an array of metadata objects as described above, your task is to display the project tree, as seen by a student at the current timepoint (`current === true`).
+You are free to choose how you want to print the project tree (console is good enough for us).
+If a student should not be able to read the file/directory, this should not show up in the project tree.
+If a file/directory is readable but not writeable, append the name with " (r)".
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Provided files
 
-### `yarn build`
+You find an example dump from our database (data.json), and the expected outcome (expected_output.txt) in this repo.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# How to hand in.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Send us your solution in a way you find the most suitable. 
